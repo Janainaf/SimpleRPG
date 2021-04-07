@@ -16,11 +16,11 @@ class Game {
 
 
 	startTurn = () => {
-		console.log(`It's turn number ${10 - this.turnLeft}`);
-		console.log("Here are the players :",
-			this.playersList.map(({ name }) => name).join(', ')
+		console.log(`It's turn number ${11 - this.turnLeft}`);
+		this.playersList.forEach((player)  => {
+			player.newTurn();
 			// add each turn one player if he/she is alive *
-			// and then pick a player
+			// and then pick a player randomly lile getRandom
 		);
 	}
 
