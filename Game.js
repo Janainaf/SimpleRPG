@@ -7,7 +7,10 @@ class Game {
 		currentPlayerIndex = 0;
 
 	startGame = () => {
+		while(this.turnLeft > 0){
+			this.newTurn();
 			this.startTurn();
+		}
 	}
 
 	addPlayer = (player) => {
@@ -18,14 +21,15 @@ class Game {
 	startTurn = () => {
 		console.log(`It's turn number ${11 - this.turnLeft}`);
 		console.log(this.playersList);
-		let alivePlayers = this.playersList.filter ((player) => player.isAlive())		 
-		let randomIndex = this.getRandom(alivePlayers)	 
-		let activePlayer = alivePlayers[randomIndex];
-		console.log(`It's time for ${activePlayer} to play`);
+		let activePlayer = this.getRandomPlayer(this.playersList,((player) => player.isAlive()) )
+		
+		console.log(`It's time for ${activePlayer.name} to play`);
+		let filterVictim = (player) => { 
+			return player.isAlive() && player.name!= activePlayer.name
+		}
 
-		let aliveVictims = alivePlayers.filter ((player) => player.name!=activePlayer.name)		 
-		let randomIndexVictim = this.getRandom(aliveVictims)	 
-		let activeVictim = aliveVictims[randomIndexVictim];
+		let activeVictim = this.getRandomPlayer(this.playersList,filterVictim)
+
 		console.log(activeVictim);
 		activePlayer.dealDamage(activeVictim)	
 		console.log(activeVictim);
@@ -36,6 +40,13 @@ class Game {
 		return Math.floor(Math.random() * array.length);
 	}
 
+	getRandomPlayer = (array, filterFunction) => {
+		let alivePlayers = array.filter(filterFunction)		 
+		let randomIndex = this.getRandom(alivePlayers)	 
+		let activePlayer = alivePlayers[randomIndex];
+		return activePlayer
+	}
+
 	newTurn = () => {
 	this.turnLeft -= 1;
 	if (this.turnLeft <= 0) {
@@ -43,12 +54,14 @@ class Game {
 		this.playersList.forEach((player) => {
 			if (player.isAlive()) {
 				player.status = "Winner!";
+				console.log(player.name);
+
 			}
 		});
 	}
 }
 	watchStats = () => {
-		this.playersList.forEach5(player)
+		this.playersList.forEach(player)
 	}
 }	
 
