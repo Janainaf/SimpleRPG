@@ -8,8 +8,8 @@ class Game {
 
 	startGame = () => {
 		while(this.turnLeft > 0){
-			this.newTurn();
 			this.startTurn();
+			this.newTurn();
 		}
 	}
 
@@ -19,7 +19,7 @@ class Game {
 
 
 	startTurn = () => {
-		console.log(`It's turn number ${10 - this.turnLeft}`);
+		console.log(`It's turn number ${11 - this.turnLeft}`);
 		let activePlayer = this.getRandomPlayer(this.playersList,((player) => player.isAlive()) )
 		
 		console.log(`It's time for ${activePlayer.name} to play`);
