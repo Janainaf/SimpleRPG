@@ -27,7 +27,7 @@ class Game {
 		let randomIndexVictim = this.getRandom(aliveVictims)	 
 		let activeVictim = aliveVictims[randomIndexVictim];
 		console.log(activeVictim);
-		activePlayer.dealDamage(activePlayer.dmg, activeVictim)	
+		activePlayer.dealDamage(activeVictim)	
 		console.log(activeVictim);
 
 	}

@@ -27,7 +27,7 @@ takeDamage = (dmg) => {
 
 
 
-dealDamage = (dmg, victim) => {
+dealDamage = (victim) => {
 		if (this.status != "playing") {
 			console.log("I can't attack because i'm not playing");
 			return false;
@@ -36,8 +36,8 @@ dealDamage = (dmg, victim) => {
 			console.log(`Impossible to attack ${victim.name} because he is not playing`);
 			return false;
 		}
-		if (dmg != 0) {
-			let damageDealed = victim.takeDamage(dmg);
+		if (this.dmg != 0) {
+			let damageDealed = victim.takeDamage(this.dmg);
 			console.log(`${this.name} is attacking ${victim.name}. He deals him ${damageDealed}. ${victim.name} got ${victim.hp} hp left`);
 			if (!victim.isAlive())
 				this.mana += 20;
