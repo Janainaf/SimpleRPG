@@ -17,15 +17,26 @@ class Game {
 
 	startTurn = () => {
 		console.log(`It's turn number ${11 - this.turnLeft}`);
-		this.playersList.forEach(player) => {
-			player.newTurn();
-		};
-			// add each turn one player if he/she is alive 
-			// and then pick a player randomly like getRandom
-	
-}
+		console.log(this.playersList);
+		let alivePlayers = this.playersList.filter ((player) => player.isAlive())		 
+		let randomIndex = this.getRandom(alivePlayers)	 
+		let activePlayer = alivePlayers[randomIndex];
+		console.log(`It's time for ${activePlayer} to play`);
 
-	nextTurn = () => {
+		let aliveVictims = alivePlayers.filter ((player) => player.name!=activePlayer.name)		 
+		let randomIndexVictim = this.getRandom(aliveVictims)	 
+		let activeVictim = aliveVictims[randomIndexVictim];
+		console.log(activeVictim);
+		activePlayer.dealDamage(activePlayer.dmg, activeVictim)	
+		console.log(activeVictim);
+
+	}
+
+	getRandom = (array) => {
+		return Math.floor(Math.random() * array.length);
+	}
+
+	newTurn = () => {
 	this.turnLeft -= 1;
 	if (this.turnLeft <= 0) {
 		console.log("Game is finished ! Winners are :");		

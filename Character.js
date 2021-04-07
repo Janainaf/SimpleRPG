@@ -14,11 +14,9 @@ takeDamage = (dmg) => {
 	if (this.status != "playing") {
 		console.log(`Hey why did I get attacked ? I'm not playing !`);
 		return 0;
+	} else { 
+			this.hp -= dmg;
 	}
-	
-	else
-		this.hp -= dmg;
-		
 	if (this.hp <= 0) {
 		this.hp = 0;
 		this.status = "loser";

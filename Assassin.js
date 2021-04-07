@@ -4,10 +4,10 @@ class Assassin extends Character {
 	dmg = 6;
 	mana = 20;
 
-	shadow = (victim) => {
+	shadowAttack = (victim) => {
 		if (this.dealDamage (0, victim) && this.mana >= 20) {
 			this.mana -= 20;
-			this.protection = true; // nao sera tocado no proximo turno
+			// nao perdera pontos no proximo turn
 			// proximo turno ele tera mais 7 de ataque e perdera 7 se o inimigo nao morrer
 		}
 	}

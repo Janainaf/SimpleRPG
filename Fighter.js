@@ -5,10 +5,9 @@ class Fighter extends Character {
 	mana = 40;
 
 
-	darkVision = (victim) => {
+	darkVisionAttack = (victim) => {
 		if (this.dealDamage (5, victim) && this.mana >= 20) {
 			this.mana -= 20; 
-			this.shield = 2; 
 		}
 	}
 }

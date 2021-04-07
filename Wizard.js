@@ -4,7 +4,7 @@ class Healer extends Character {
 	dmg = 2; 
 	mana = 200;
 
-	fireball = (victim) => {
+	fireballAttack = (victim) => {
 			if (this.dealDamage(5, victim) && this.mana >= 25) {
 				this.mana -= 25;
 

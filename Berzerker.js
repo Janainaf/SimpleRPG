@@ -4,7 +4,7 @@ class Berserker extends Character {
 	dmg = 4;
 	mana = 0;
 
-	rage = () => {
+	rageAttack = () => {
 		if (this.dealDamage(0, victim)) {
 			this.dmg += 1;
 			this.takeDamage(1);
