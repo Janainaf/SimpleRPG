@@ -19,8 +19,7 @@ class Game {
 
 
 	startTurn = () => {
-		console.log(`It's turn number ${11 - this.turnLeft}`);
-		console.log(this.playersList);
+		console.log(`It's turn number ${10 - this.turnLeft}`);
 		let activePlayer = this.getRandomPlayer(this.playersList,((player) => player.isAlive()) )
 		
 		console.log(`It's time for ${activePlayer.name} to play`);
@@ -29,10 +28,7 @@ class Game {
 		}
 
 		let activeVictim = this.getRandomPlayer(this.playersList,filterVictim)
-
-		console.log(activeVictim);
 		activePlayer.dealDamage(activeVictim)	
-		console.log(activeVictim);
 
 	}
 
@@ -49,21 +45,26 @@ class Game {
 
 	newTurn = () => {
 	this.turnLeft -= 1;
-	if (this.turnLeft <= 0) {
+	if (this.turnLeft <=0) {
 		console.log("Game is finished ! Winners are :");		
 		this.playersList.forEach((player) => {
 			if (player.isAlive()) {
-				player.status = "Winner!";
+				player.status = "winner";
 				console.log(player.name);
-
 			}
 		});
 	}
 }
-	watchStats = () => {
-		this.playersList.forEach(player)
-	}
-}	
+watchStats = () => {
+	this.playersList.forEach((player) => {
+		if (!player.isAlive()) {
+			console.log(`${player.name} is dead!`);
+		} else {
+			console.log(`${player.name} is alive and kicking, with ${player.hp} PV, ${player.dmg} dmg and ${player.mana} mana`);
+				}
+	});
+}
+}
 
 const Grace = new Fighter('Grace');
 const Ulder = new Paladin('Ulder');
