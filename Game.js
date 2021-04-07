@@ -17,12 +17,13 @@ class Game {
 
 	startTurn = () => {
 		console.log(`It's turn number ${11 - this.turnLeft}`);
-		this.playersList.forEach((player)  => {
+		this.playersList.forEach(player) => {
 			player.newTurn();
-			// add each turn one player if he/she is alive *
-			// and then pick a player randomly lile getRandom
-		);
-	}
+		};
+			// add each turn one player if he/she is alive 
+			// and then pick a player randomly like getRandom
+	
+}
 
 	nextTurn = () => {
 	this.turnLeft -= 1;
@@ -35,7 +36,9 @@ class Game {
 		});
 	}
 }
-
+	watchStats = () => {
+		this.playersList.forEach5(player)
+	}
 }	
 
 const Grace = new Fighter('Grace');

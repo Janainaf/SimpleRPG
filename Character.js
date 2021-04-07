@@ -4,8 +4,8 @@ class Character {
 	dmg;
 	mana;
 	status = 'playing';
-	shield = 0;
-}
+
+
 isAlive = () => {
 	return this.hp > 0;
 }
@@ -46,7 +46,4 @@ dealDamage = (dmg, victim) => {
 		}
 		return true;
 	}
-	
-	watchStats = () => {
-		
-	}
+}
