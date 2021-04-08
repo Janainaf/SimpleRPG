@@ -22,39 +22,43 @@
 		console.log(`It's turn number ${11 - this.turnLeft} 👊. There are ${this.turnLeft-1} turns left`);
 		console.log( "Here are the players :",this.playersList.map(({ name }) => name).join(', '));
 		
-		if (typeof this.activePlayer === 'undefined')  {
+		if (!this.playerIsSet())  {
 			console.log(`Please choose a Player`);
 			return
 		}
-
-		console.log(`It's time for ${this.activePlayer.name} to play`);
 		
 		let filterVictim = (player) => { 
 			return player.isAlive() && player.name!= this.activePlayer.name
 		}
 
 		let activeVictim = this.getRandomPlayer(this.playersList,filterVictim)
-		this.activePlayer.dealDamage(activeVictim)	
-		console.log(activeVictim);
+		//console.log(activeVictim);
 		
 	}
 
-	setPlayer = (playerName) => {
-		let validPlayer = this.playersList.filter((player)=> player.isAlive() && player.name == playerName) 
+	setPlayer = (chosenPlayer) => {
+		let validPlayer = this.playersList.filter((player)=> player.isAlive() && player.name == chosenPlayer.name) 
 		if (validPlayer.length === 0) {
 			console.log("Player is not valid") 
 		}  else {
-			this.activePlayer = validPlayer[0]
+			this.activePlayer = chosenPlayer
+			console.log(`It's time for ${this.activePlayer.name} to play`);
 		}
-		console.log(this.activePlayer);
+		//console.log(this.activePlayer);
 	}
 
+	playerIsSet = () => {
+		return typeof this.activePlayer !== 'undefined'
+	}
 
-	// activePlayerAttacks = (victim) =>  {
-	// 	activePlayer.dealDamage(victim);
-	//   }
-
-	// activePlayerSpecialAttack = (victim) =>  {
+	activePlayerAttack = (victim) =>  {
+	if (this.playerIsSet()) {
+		this.startTurn();
+		this.activePlayer.dealDamage(victim);
+	  }
+	  
+	}
+	//activePlayerSpecialAttack = (victim) =>  {
 	// 	Ulder.specialAttack(victim);
 	//    }
 
