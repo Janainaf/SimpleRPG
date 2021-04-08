@@ -5,15 +5,15 @@ Dont't miss all the action...
 ...the battle is happening on the console 🤫 
 Choose a player with this command 
 
-     game.setPlayer("Choose a Player Name")
+     game.setPlayer(Name)
     
 Attack a player with this command 
-     `game.activePlayerAttack(your victims name)`
+     `game.activePlayerAttack(Name)`
     
 Special Attack? No worries, use with this command 
 
 
-    `game.activePlayerSpecialAttack(your victims name)`
+    game.activePlayerSpecialAttack(Name)
 
    
    Ps: use  `game.watchStats();` to check game stats
