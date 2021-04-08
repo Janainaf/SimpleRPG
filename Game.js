@@ -3,6 +3,7 @@
 
 		turnLeft = 10;
 		playersList = [];
+		activePlayer;
 		
 
 	startGame = () => {
@@ -18,32 +19,60 @@
 
 	
 	startTurn = () => {
-		console.log(`It's turn number ${11 - this.turnLeft} 👊. There are ${this.turnLeft-1} turns left`);
-		let activePlayer = this.getRandomPlayer(this.playersList,((player) => player.isAlive()) )
+		if (10 - this.turnLeft === 0) {
+			console.log(`Lets Fight`);
+			console.log( "Here are the players :",this.playersList.map(({ name }) => name).join(', '));
+
+		} else {
+			console.log(`It's turn number ${10 - this.turnLeft} 👊. There are ${this.turnLeft} turns left`);
+			console.log( "Here are your victims :",this.playersList.map(({ name }) => name).join(', '));
+		}
+
+		if (!this.playerIsSet())  {
+			console.log(`Please choose a Player`);
+			return
+		}
 		
-		console.log(`It's time for ${activePlayer.name} to play`);
 		let filterVictim = (player) => { 
-			return player.isAlive() && player.name!= activePlayer.name
+			return player.isAlive() && player.name!= this.activePlayer.name
 		}
 
 		let activeVictim = this.getRandomPlayer(this.playersList,filterVictim)
-		activePlayer.dealDamage(activeVictim)	
-		console.log("--------------------------");
-
-		console.log("Some Stats about the game");
-		game.watchStats(); 
-		console.log("--------------------------");
+		//console.log(activeVictim);
+		
 	}
 
-	// activePlayer = () => {
-	// 	this.getRandomPlayer(this.playersList,((player) => player.isAlive()));
-	// 	console.log(`It's time for ${activePlayer.name} to play`);
-	//  };
+	setPlayer = (chosenPlayer) => {
+		let validPlayer = this.playersList.filter((player)=> player.isAlive() && player.name == chosenPlayer.name) 
+		if (validPlayer.length === 0) {
+			console.log("Player is not valid") 
+		}  else {
+			this.activePlayer = chosenPlayer
+			console.log(`It's time for ${this.activePlayer.name} to play`);
+		}
+		//console.log(this.activePlayer);
+	}
 
-	// activePlayerAttacks = (victim) =>  {
-	// 	Carl.dealDamage(victim);
-	//   }
+	playerIsSet = () => {
+		return typeof this.activePlayer !== 'undefined'
+	}
 
+	activePlayerAttack = (victim) =>  {
+	if (this.playerIsSet()) {
+		this.newTurn();
+		this.startTurn();
+		this.activePlayer.dealDamage(victim);
+		 }
+	  
+	}
+	
+	activePlayerSpecialAttack = (victim) =>  {
+	if (this.playerIsSet()) {
+		this.newTurn();
+		this.startTurn();
+		this.activePlayer.specialAttack(victim);
+	    }
+	}
 
 	getRandom = (array) => {
 		return Math.floor(Math.random() * array.length);
@@ -79,10 +108,10 @@ watchStats = () => {
 }
 }
 
-
+const Fefe = new Wizard('Fefe');
 const Grace = new Fighter('Grace');
 const Ulder = new Paladin('Ulder');
-const Moana = new Healer('Moana');
+const Moana = new Monk('Moana');
 const Draven = new Berserker('Draven');
 const Carl = new Assassin('Carl');
 
@@ -93,5 +122,6 @@ game.addPlayer(Grace);
 game.addPlayer(Draven);
 game.addPlayer(Moana);
 game.addPlayer(Carl);
+game.addPlayer(Fefe);
 
 game.startGame();
