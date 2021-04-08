@@ -8,6 +8,7 @@ class Fighter extends Character {
 	darkVisionAttack = (victim) => {
 		if (this.dealDamage (5, victim) && this.mana >= 20) {
 			this.mana -= 20; 
+			// add next turn he will take a -2 dmg when hit
 		}
 	}
 }

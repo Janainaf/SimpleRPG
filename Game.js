@@ -3,6 +3,7 @@
 
 		turnLeft = 10;
 		playersList = [];
+		activePlayer;
 		
 
 	startGame = () => {
@@ -19,9 +20,12 @@
 	
 	startTurn = () => {
 		console.log(`It's turn number ${11 - this.turnLeft} 👊. There are ${this.turnLeft-1} turns left`);
-		let activePlayer = this.getRandomPlayer(this.playersList,((player) => player.isAlive()) )
+		console.log( "Here are the players :",this.playersList.map(({ name }) => name).join(', '));
+		
+		this.activePlayer = this.getRandomPlayer(this.playersList,((player) => player.isAlive()) )
 		
 		console.log(`It's time for ${activePlayer.name} to play`);
+		
 		let filterVictim = (player) => { 
 			return player.isAlive() && player.name!= activePlayer.name
 		}
@@ -29,20 +33,25 @@
 		let activeVictim = this.getRandomPlayer(this.playersList,filterVictim)
 		activePlayer.dealDamage(activeVictim)	
 		console.log("--------------------------");
-
-		console.log("Some Stats about the game");
-		game.watchStats(); 
-		console.log("--------------------------");
+		
 	}
 
-	// activePlayer = () => {
-	// 	this.getRandomPlayer(this.playersList,((player) => player.isAlive()));
-	// 	console.log(`It's time for ${activePlayer.name} to play`);
-	//  };
+	setPlayer = (playerName) => {
+		this.activePlayer = this.playersList.filter((player)=> player.isAlive() && player.name == playerName) 
+		if (this.activePlayer.length === 0) {
+			console.log("Player is not valid") 
+		}
+		console.log(this.activePlayer);
+	}
+
 
 	// activePlayerAttacks = (victim) =>  {
-	// 	Carl.dealDamage(victim);
+	// 	activePlayer.dealDamage(victim);
 	//   }
+
+	// activePlayerSpecialAttack = (victim) =>  {
+	// 	Ulder.specialAttack(victim);
+	//    }
 
 
 	getRandom = (array) => {
@@ -79,7 +88,7 @@ watchStats = () => {
 }
 }
 
-
+const Fefe = new Wizard('Fefe');
 const Grace = new Fighter('Grace');
 const Ulder = new Paladin('Ulder');
 const Moana = new Healer('Moana');
@@ -93,5 +102,6 @@ game.addPlayer(Grace);
 game.addPlayer(Draven);
 game.addPlayer(Moana);
 game.addPlayer(Carl);
+game.addPlayer(Fefe);
 
 game.startGame();

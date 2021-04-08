@@ -25,6 +25,10 @@ takeDamage = (dmg) => {
 	return dmg;
 }
 
+// specialAttack = (victim) => {
+// 	return this.dealDamage(this.dmg, victim);
+// 	}
+
 
 dealDamage = (victim) => {
 		if (victim != null && victim.status != "playing") {
@@ -39,4 +43,5 @@ dealDamage = (victim) => {
 		}
 		return true;
 	}
+
 }

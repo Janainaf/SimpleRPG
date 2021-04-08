@@ -7,8 +7,10 @@ class Assassin extends Character {
 	shadowAttack = (victim) => {
 		if (this.dealDamage (0, victim) && this.mana >= 20) {
 			this.mana -= 20;
-			// nao perdera pontos no proximo turn
-			// proximo turno ele tera mais 7 de ataque e perdera 7 se o inimigo nao morrer
+			
+		// if he uses special attack, he doesnt suffer a hit in the next round 
+		// and his attack will have a dmg+7 
+		// but if victim is not dead, he will lose 7dmg
 		}
 	}
 }
