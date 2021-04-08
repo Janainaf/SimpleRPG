@@ -26,10 +26,9 @@ takeDamage = (dmg) => {
 }
 
 
-
 dealDamage = (victim) => {
 		if (victim != null && victim.status != "playing") {
-			console.log(`Impossible to attack ${victim.name} because he is not playing`);
+			console.log(`Impossible to attack ${victim.name} because he is probably dead already`);
 			return false;
 		}
 		if (this.dmg != 0) {

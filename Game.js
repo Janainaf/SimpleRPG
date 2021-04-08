@@ -1,25 +1,24 @@
-class Game {
 
-		totalTurns = 10;
+ class Game {
+
 		turnLeft = 10;
 		playersList = [];
-		playersTurns = [];
-		currentPlayerIndex = 0;
+		
 
 	startGame = () => {
-		while(this.turnLeft > 0){
+		//while(this.turnLeft > 0){
 			this.startTurn();
-			this.newTurn();
-		}
+		//	this.newTurn();
+	//	}
 	}
 
 	addPlayer = (player) => {
 		this.playersList.push(player);
 	}
 
-
+	
 	startTurn = () => {
-		console.log(`It's turn number ${11 - this.turnLeft}`);
+		console.log(`It's turn number ${11 - this.turnLeft} 👊. There are ${this.turnLeft-1} turns left`);
 		let activePlayer = this.getRandomPlayer(this.playersList,((player) => player.isAlive()) )
 		
 		console.log(`It's time for ${activePlayer.name} to play`);
@@ -29,8 +28,22 @@ class Game {
 
 		let activeVictim = this.getRandomPlayer(this.playersList,filterVictim)
 		activePlayer.dealDamage(activeVictim)	
+		console.log("--------------------------");
 
+		console.log("Some Stats about the game");
+		game.watchStats(); 
+		console.log("--------------------------");
 	}
+
+	// activePlayer = () => {
+	// 	this.getRandomPlayer(this.playersList,((player) => player.isAlive()));
+	// 	console.log(`It's time for ${activePlayer.name} to play`);
+	//  };
+
+	// activePlayerAttacks = (victim) =>  {
+	// 	Carl.dealDamage(victim);
+	//   }
+
 
 	getRandom = (array) => {
 		return Math.floor(Math.random() * array.length);
@@ -46,7 +59,7 @@ class Game {
 	newTurn = () => {
 	this.turnLeft -= 1;
 	if (this.turnLeft <=0) {
-		console.log("Game is finished ! Winners are :");		
+		console.log("Game is over! Winners are :");		
 		this.playersList.forEach((player) => {
 			if (player.isAlive()) {
 				player.status = "winner";
@@ -57,14 +70,15 @@ class Game {
 }
 watchStats = () => {
 	this.playersList.forEach((player) => {
-		if (!player.isAlive()) {
-			console.log(`${player.name} is dead!`);
+		if (player.isAlive()) {
+			console.log(`${player.name} is alive and kicking, with ${player.hp} PV, ${player.dmg} dmg and ${player.mana} mana`); 
 		} else {
-			console.log(`${player.name} is alive and kicking, with ${player.hp} PV, ${player.dmg} dmg and ${player.mana} mana`);
+			console.log(`${player.name} is dead!`);
 				}
 	});
 }
 }
+
 
 const Grace = new Fighter('Grace');
 const Ulder = new Paladin('Ulder');
