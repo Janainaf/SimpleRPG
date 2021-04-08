@@ -3,6 +3,8 @@ class Game {
 	turnLeft = 10;
 	playersList = [];
 	activePlayer;
+	activeVictim;
+
 	
 
 startGame = () => {
@@ -24,7 +26,8 @@ startTurn = () => {
 
 	} else {
 		console.log(`It's turn number ${10 - this.turnLeft} ⌛️ . There are ${this.turnLeft} turns left ⏳`);
-		
+		console.log(`-----------------------------------------------------------------`)
+
 	}
 
 	if (!this.playerIsSet())  {
@@ -62,6 +65,11 @@ if (this.playerIsSet()) {
 	this.newTurn();
 	this.startTurn();
 	this.activePlayer.dealDamage(victim);
+	console.log(`-----------------------------------------------------------------`)
+
+	console.log(`😱 ${victim.name} not gonna sit and take it, s/he figths back haha 🤣`)
+	console.log(`-----------------------------------------------------------------`)
+	victim.dealDamage(this.activePlayer)
 	 }
   
 }
@@ -71,9 +79,11 @@ if (this.playerIsSet()) {
 	this.newTurn();
 	this.startTurn();
 	console.log(`It's time for ${this.activePlayer.name} to use a special attack 🔫`)
+	
 	this.activePlayer.specialAttack(victim);
 	}
 }
+
 
 getRandom = (array) => {
 	return Math.floor(Math.random() * array.length);
