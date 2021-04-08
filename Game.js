@@ -20,7 +20,7 @@
 	
 	startTurn = () => {
 		if (10 - this.turnLeft === 0) {
-			console.log(`Lets Fight`);
+			console.log(`Let's Fight`);
 			console.log( "Here are the players :",this.playersList.map(({ name }) => name).join(', '));
 
 		} else {
