@@ -5,9 +5,11 @@ class Wizard extends Character {
 	mana = 200;
 
 
-	fireballAttack = (victim) => {
-			if (this.dealDamage(7, victim) && this.mana >= 25) {
+	specialAttack = (victim) => {
+			if (this.dealDamage(victim, 7) && this.mana >= 25) {
 				this.mana -= 25;
+				console.log("Lightning Attack!")
+
 		}
 	}
 }

@@ -5,7 +5,7 @@ class Paladin extends Character {
 	mana = 160;
 
 	specialAttack = (victim) => {
-		if (this.dealDamage(4, victim) && this.mana >= 40) {
+		if (this.dealDamage(victim, 4) && this.mana >= 40) {
 			console.log("Lightning Attack!")
 			this.hp += 5;
 			this.mana -= 40;

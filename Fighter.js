@@ -5,10 +5,11 @@ class Fighter extends Character {
 	mana = 40;
 
 
-	darkVisionAttack = (victim) => {
-		if (this.dealDamage (5, victim) && this.mana >= 20) {
-			this.mana -= 20; 
-			// add next turn he will take a -2 dmg when hit
+	specialAttack = (victim) => {
+		if (this.dealDamage (victim, 5) && this.mana >= 20) {
+		this.mana -= 20; 
+		console.log("Lightning Attack!")
+
 		}
 	}
 }

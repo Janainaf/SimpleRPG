@@ -4,12 +4,13 @@ class Berserker extends Character {
 	dmg = 4;
 	mana = 0;
 
-		// ok, add something like special attack
 
-	rageAttack = () => {
-		if (this.dealDamage(0, victim)) {
+	specialAttack = (victim) => {
+		if (this.dealDamage(victim, 0)) {
 			this.dmg += 1;
 			this.takeDamage(1);
+			console.log("Lightning Attack!")
+
 		}
 	}
 }

@@ -19,9 +19,13 @@
 
 	
 	startTurn = () => {
-		console.log(`It's turn number ${11 - this.turnLeft} 👊. There are ${this.turnLeft-1} turns left`);
-		console.log( "Here are the players :",this.playersList.map(({ name }) => name).join(', '));
-		
+		if (10 - this.turnLeft === 0) {
+			console.log(`Lets Fight`);
+		} else {
+			console.log(`It's turn number ${10 - this.turnLeft} 👊. There are ${this.turnLeft} turns left`);
+			console.log( "Here are the players :",this.playersList.map(({ name }) => name).join(', '));
+		}
+
 		if (!this.playerIsSet())  {
 			console.log(`Please choose a Player`);
 			return
@@ -53,15 +57,20 @@
 
 	activePlayerAttack = (victim) =>  {
 	if (this.playerIsSet()) {
+		this.newTurn();
 		this.startTurn();
 		this.activePlayer.dealDamage(victim);
-	  }
+		 }
 	  
 	}
-	//activePlayerSpecialAttack = (victim) =>  {
-	// 	Ulder.specialAttack(victim);
-	//    }
-
+	
+	activePlayerSpecialAttack = (victim) =>  {
+	if (this.playerIsSet()) {
+		this.newTurn();
+		this.startTurn();
+		this.activePlayer.specialAttack(victim);
+	    }
+	}
 
 	getRandom = (array) => {
 		return Math.floor(Math.random() * array.length);
@@ -100,7 +109,7 @@ watchStats = () => {
 const Fefe = new Wizard('Fefe');
 const Grace = new Fighter('Grace');
 const Ulder = new Paladin('Ulder');
-const Moana = new Healer('Moana');
+const Moana = new Monk('Moana');
 const Draven = new Berserker('Draven');
 const Carl = new Assassin('Carl');
 
