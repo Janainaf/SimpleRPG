@@ -20,16 +20,16 @@
 	
 	startTurn = () => {
 		if (10 - this.turnLeft === 0) {
-			console.log(`Let's Fight`);
+			console.log(`Let's Fight 💪🏼`);
 			console.log( "Here are the players :",this.playersList.map(({ name }) => name).join(', '));
 
 		} else {
-			console.log(`It's turn number ${10 - this.turnLeft} 👊. There are ${this.turnLeft} turns left`);
+			console.log(`It's turn number ${10 - this.turnLeft} ⌛️ . There are ${this.turnLeft} turns left ⏳`);
 			
 		}
 
 		if (!this.playerIsSet())  {
-			console.log(`Please choose a Player`);
+			console.log(`Please choose a Player  🤔`);
 			return
 		}
 		
@@ -48,8 +48,8 @@
 			console.log("Player is not valid") 
 		}  else {
 			this.activePlayer = chosenPlayer
-			console.log(`It's time for ${this.activePlayer.name} to play`);
-			console.log( "Choose an enemy :",this.playersList.map(({ name }) => name).join(', '));
+			console.log(`It's time for ${this.activePlayer.name} to play 🦸`);
+			console.log( "Choose an enemy and attack :",this.playersList.map(({ name }) => name).join(', '));
 		}
 		//console.log(this.activePlayer);
 	}
@@ -71,7 +71,7 @@
 	if (this.playerIsSet()) {
 		this.newTurn();
 		this.startTurn();
-		console.log(`It's time for ${this.activePlayer.name} to use a special attack`)
+		console.log(`It's time for ${this.activePlayer.name} to use a special attack 🔫`)
 		this.activePlayer.specialAttack(victim);
 	    }
 	}
@@ -90,7 +90,7 @@
 	newTurn = () => {
 	this.turnLeft -= 1;
 	if (this.turnLeft <=0) {
-		console.log("Game is over! Winners are :");		
+		console.log("Game is over! ⛔️ Winners are  🏆:");		
 		this.playersList.forEach((player) => {
 			if (player.isAlive()) {
 				player.status = "winner";
@@ -104,7 +104,7 @@ watchStats = () => {
 		if (player.isAlive()) {
 			console.log(`${player.name} is alive and kicking, with ${player.hp} PV, ${player.dmg} dmg and ${player.mana} mana`); 
 		} else {
-			console.log(`${player.name} is dead!`);
+			console.log(`${player.name} is dead! 😵`);
 				}
 	});
 }

@@ -20,7 +20,7 @@ takeDamage = (dmg) => {
 	if (this.hp <= 0) {
 		this.hp = 0;
 		this.status = "loser";
-		console.log(`${this.name} just died !`);
+		console.log(`${this.name} just died ! 😵`);
 	}
 	return dmg;
 }
@@ -29,12 +29,12 @@ takeDamage = (dmg) => {
 
 dealDamage = (victim) => {
 		if (victim == null || victim.status != "playing" || !victim.isAlive()) {
-			console.log(`Impossible to attack ${victim.name} because s/he is probably dead already`);
+			console.log(`Impossible to attack ${victim.name} because s/he is probably dead already 😵`);
 			return false;
 		}
 		if (this.dmg != 0) {
 			let damageDealed = victim.takeDamage(this.dmg);
-			console.log(`${this.name} chose to attack ${victim.name}. S/He hits and ouch! ${damageDealed} points of damage. ${victim.name} has now only  ${victim.hp} hp left`);
+			console.log(`${this.name} chose to attack ${victim.name} 👊. S/He hits and ouch!💥 ${damageDealed} points of damage. ${victim.name} has now only ${victim.hp} hp left 🩸`);
 			if (!victim.isAlive())
 				this.mana += 20;
 		}
