@@ -25,7 +25,7 @@
 
 		} else {
 			console.log(`It's turn number ${10 - this.turnLeft} 👊. There are ${this.turnLeft} turns left`);
-			console.log( "Here are your victims :",this.playersList.map(({ name }) => name).join(', '));
+			
 		}
 
 		if (!this.playerIsSet())  {
@@ -49,6 +49,7 @@
 		}  else {
 			this.activePlayer = chosenPlayer
 			console.log(`It's time for ${this.activePlayer.name} to play`);
+			console.log( "Choose an enemy :",this.playersList.map(({ name }) => name).join(', '));
 		}
 		//console.log(this.activePlayer);
 	}
@@ -70,6 +71,7 @@
 	if (this.playerIsSet()) {
 		this.newTurn();
 		this.startTurn();
+		console.log(`It's time for ${this.activePlayer.name} to use a special attack`)
 		this.activePlayer.specialAttack(victim);
 	    }
 	}

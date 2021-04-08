@@ -8,7 +8,7 @@ class Wizard extends Character {
 	specialAttack = (victim) => {
 			if (this.dealDamage(victim, 7) && this.mana >= 25) {
 				this.mana -= 25;
-				console.log("Lightning Attack!")
+				console.log("Just so you know, Fefe used his special Attack - Purple Haze!")
 
 		}
 	}

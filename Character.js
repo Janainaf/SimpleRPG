@@ -34,7 +34,7 @@ dealDamage = (victim) => {
 		}
 		if (this.dmg != 0) {
 			let damageDealed = victim.takeDamage(this.dmg);
-			console.log(`${this.name} is attacking ${victim.name}. He deals him ${damageDealed}. ${victim.name} got ${victim.hp} hp left`);
+			console.log(`${this.name} chose to attack ${victim.name}. S/He hits and ouch! ${damageDealed} points of damage. ${victim.name} has now only  ${victim.hp} hp left`);
 			if (!victim.isAlive())
 				this.mana += 20;
 		}

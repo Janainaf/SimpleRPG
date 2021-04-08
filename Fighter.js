@@ -8,7 +8,7 @@ class Fighter extends Character {
 	specialAttack = (victim) => {
 		if (this.dealDamage (victim, 5) && this.mana >= 20) {
 		this.mana -= 20; 
-		console.log("Lightning Attack!")
+		console.log("Just so you know, Grace used her special Attack - Dark Vision Attack!")
 
 		}
 	}

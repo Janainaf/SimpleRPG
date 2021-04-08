@@ -7,7 +7,7 @@ class Assassin extends Character {
 	specialAttack = (victim) => {
 		if (this.dealDamage (victim, 0) && this.mana >= 20) {
 			this.mana -= 20;
-			console.log("Lightning Attack!")
+			console.log("Just so you know, Carl used his special Attack - Shadow Hit!")
 
 		}
 	}
