@@ -21,9 +21,11 @@
 	startTurn = () => {
 		if (10 - this.turnLeft === 0) {
 			console.log(`Lets Fight`);
+			console.log( "Here are the players :",this.playersList.map(({ name }) => name).join(', '));
+
 		} else {
 			console.log(`It's turn number ${10 - this.turnLeft} 👊. There are ${this.turnLeft} turns left`);
-			console.log( "Here are the players :",this.playersList.map(({ name }) => name).join(', '));
+			console.log( "Here are your victims :",this.playersList.map(({ name }) => name).join(', '));
 		}
 
 		if (!this.playerIsSet())  {
