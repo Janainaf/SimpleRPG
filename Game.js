@@ -22,24 +22,29 @@
 		console.log(`It's turn number ${11 - this.turnLeft} 👊. There are ${this.turnLeft-1} turns left`);
 		console.log( "Here are the players :",this.playersList.map(({ name }) => name).join(', '));
 		
-		this.activePlayer = this.getRandomPlayer(this.playersList,((player) => player.isAlive()) )
-		
-		console.log(`It's time for ${activePlayer.name} to play`);
+		if (typeof this.activePlayer === 'undefined')  {
+			console.log(`Please choose a Player`);
+			return
+		}
+
+		console.log(`It's time for ${this.activePlayer.name} to play`);
 		
 		let filterVictim = (player) => { 
-			return player.isAlive() && player.name!= activePlayer.name
+			return player.isAlive() && player.name!= this.activePlayer.name
 		}
 
 		let activeVictim = this.getRandomPlayer(this.playersList,filterVictim)
-		activePlayer.dealDamage(activeVictim)	
-		console.log("--------------------------");
+		this.activePlayer.dealDamage(activeVictim)	
+		console.log(activeVictim);
 		
 	}
 
 	setPlayer = (playerName) => {
-		this.activePlayer = this.playersList.filter((player)=> player.isAlive() && player.name == playerName) 
-		if (this.activePlayer.length === 0) {
+		let validPlayer = this.playersList.filter((player)=> player.isAlive() && player.name == playerName) 
+		if (validPlayer.length === 0) {
 			console.log("Player is not valid") 
+		}  else {
+			this.activePlayer = validPlayer[0]
 		}
 		console.log(this.activePlayer);
 	}
